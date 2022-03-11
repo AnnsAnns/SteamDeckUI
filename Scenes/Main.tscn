@@ -1,24 +1,191 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/FileDialog.gd" type="Script" id=2]
+[ext_resource path="res://SteamFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Data/AButton.png" type="Texture" id=4]
+[ext_resource path="res://Data/White_triangle.svg" type="Texture" id=5]
+[ext_resource path="res://MotivaSans-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/InstallButton.gd" type="Script" id=7]
 
 [sub_resource type="Theme" id=1]
 
-[node name="Control" type="Control"]
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.4, 0.843137, 0.294118, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.341176, 0.623529, 0.211765, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.443137, 0.811765, 0.270588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.34902, 0.74902, 0.25098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.34902, 0.74902, 0.25098, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+outline_color = Color( 0.34902, 0.74902, 0.25098, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+outline_color = Color( 0.34902, 0.74902, 0.25098, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 1.0
+margin_bottom = -12.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LightGray" type="ColorRect" parent="Background"]
+margin_left = -4.0
+margin_top = -7.0
+margin_right = 1027.0
+margin_bottom = 599.0
+color = Color( 0.180392, 0.188235, 0.239216, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarkGray" type="ColorRect" parent="Background"]
+margin_left = -4.0
+margin_top = 419.0
+margin_right = 1027.0
+margin_bottom = 599.0
+color = Color( 0.0588235, 0.0745098, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtons" type="Control" parent="."]
+margin_left = 1.0
+margin_top = -3.0
+margin_right = 41.0
+margin_bottom = 37.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MenuButtons"]
+margin_left = -3.0
+margin_top = 560.0
+margin_right = 1023.0
+margin_bottom = 603.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MenuButtons"]
+margin_left = 953.0
+margin_top = 567.0
+margin_right = 1015.0
+margin_bottom = 592.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Select"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AButton" type="Sprite" parent="MenuButtons"]
+position = Vector2( 934, 581 )
+scale = Vector2( 0.703704, 0.704082 )
+texture = ExtResource( 4 )
 
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_left = -1.0
 margin_top = 18.0
-margin_right = 1029.0
-margin_bottom = 604.0
-theme = SubResource( 1 )
-window_title = "Open a File"
-dialog_text = "AAAAA"
+margin_right = 1021.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 300, 105 )
+window_title = "Datei öffnen"
+dialog_text = "Select the game to install:
+"
 dialog_autowrap = true
 mode = 0
-access = 2
-current_dir = "/home/tom/projects/SteamDeckUI"
-current_path = "/home/tom/projects/SteamDeckUI/"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstallButton" type="Control" parent="."]
+margin_left = 125.0
+margin_top = 31.0
+margin_right = 165.0
+margin_bottom = 71.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="InstallButton"]
+margin_left = 194.0
+margin_top = 135.0
+margin_right = 270.0
+margin_bottom = 211.0
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstallGameLabel" type="Label" parent="InstallButton"]
+margin_left = 281.0
+margin_top = 137.0
+margin_right = 496.0
+margin_bottom = 181.0
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Install Game "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstallGameLabel2" type="Label" parent="InstallButton"]
+modulate = Color( 0.34902, 0.74902, 0.25098, 1 )
+margin_left = 283.0
+margin_top = 181.0
+margin_right = 603.0
+margin_bottom = 211.0
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 8 )
+text = "via Proton and add to Steam"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WhiteTriangle" type="Sprite" parent="InstallButton"]
+position = Vector2( 236, 175 )
+rotation = 1.57079
+scale = Vector2( 0.789776, 0.702182 )
+texture = ExtResource( 5 )
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="InstallButton/Button" to="." method="_on_Button_pressed"]
