@@ -1,15 +1,31 @@
 extends Control
 
 var chosen_path: String = ""
+var path_chosen: bool = false
 
 func _on_FileDialog_file_selected(path):
 	chosen_path = path
+	path_chosen = true
+	show_game_installer_screen()
 	print(path)
 
 func _on_Button_pressed():
 	$FileDialog.show()
-	$InstallButton.change_visiblity()
+	$MenuButtons/GridContainer/ButtonLabelB.show()
+	$MenuButtons/GridContainer/ButtonTextB.show()
+	$InstallButton.hide()
 
 func _on_FileDialog_hide():
-	if not $InstallButton.visible and chosen_path == "":
-		$InstallButton.change_visiblity()
+	if not $InstallButton.visible and not path_chosen:
+		$InstallButton.show()
+	
+	$MenuButtons/GridContainer/ButtonLabelB.hide()
+	$MenuButtons/GridContainer/ButtonTextB.hide()
+
+func show_game_installer_screen():
+	$MiddleScreenLabel.text = "Sending installation request to Proton ..."
+	$MiddleScreenLabel.show()
+	OS.execute("notepad.exe",[],false)
+
+func _ready():
+	$InstallButton.show()

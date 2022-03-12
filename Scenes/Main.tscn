@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/FileDialog.gd" type="Script" id=2]
 [ext_resource path="res://SteamFont.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Data/AButton.png" type="Texture" id=4]
+[ext_resource path="res://ButtonFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Data/White_triangle.svg" type="Texture" id=5]
-[ext_resource path="res://MotivaSans-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Data/MotivaSans-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/InstallButton.gd" type="Script" id=7]
 
 [sub_resource type="Theme" id=1]
@@ -34,6 +34,13 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 24
+outline_color = Color( 0.34902, 0.74902, 0.25098, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 34
 outline_color = Color( 0.34902, 0.74902, 0.25098, 1 )
 use_mipmaps = true
 use_filter = true
@@ -97,11 +104,54 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MenuButtons"]
-margin_left = 953.0
+[node name="GridContainer" type="GridContainer" parent="MenuButtons"]
+margin_left = 924.0
 margin_top = 567.0
-margin_right = 1015.0
-margin_bottom = 592.0
+margin_right = 1009.0
+margin_bottom = 597.0
+grow_horizontal = 0
+grow_vertical = 0
+columns = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLabelB" type="Label" parent="MenuButtons/GridContainer"]
+visible = false
+margin_right = 24.0
+margin_bottom = 24.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "B"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTextB" type="Label" parent="MenuButtons/GridContainer"]
+visible = false
+margin_right = 177.0
+margin_bottom = 25.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Go to parent folder"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLabelA" type="Label" parent="MenuButtons/GridContainer"]
+margin_right = 24.0
+margin_bottom = 24.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTextA" type="Label" parent="MenuButtons/GridContainer"]
+margin_left = 28.0
+margin_right = 85.0
+margin_bottom = 25.0
 theme = SubResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Select"
@@ -109,17 +159,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AButton" type="Sprite" parent="MenuButtons"]
-position = Vector2( 934, 581 )
-scale = Vector2( 0.703704, 0.704082 )
-texture = ExtResource( 4 )
-
 [node name="FileDialog" type="FileDialog" parent="."]
 visible = true
 margin_left = -1.0
 margin_top = 18.0
 margin_right = 1021.0
-margin_bottom = 600.0
+margin_bottom = 556.0
 rect_min_size = Vector2( 300, 105 )
 window_title = "Datei öffnen"
 dialog_text = "Select the game to install:
@@ -135,6 +180,7 @@ __meta__ = {
 }
 
 [node name="InstallButton" type="Control" parent="."]
+visible = false
 margin_left = 125.0
 margin_top = 31.0
 margin_right = 165.0
@@ -190,6 +236,24 @@ position = Vector2( 236, 175 )
 rotation = 1.57079
 scale = Vector2( 0.789776, 0.702182 )
 texture = ExtResource( 5 )
+
+[node name="MiddleScreenLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -262.0
+margin_top = 123.0
+margin_right = 245.0
+margin_bottom = 281.0
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Welcome to Team Fortress 2. After 9 years in development, hopefully it would have been worth the wait. "
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="hide" from="FileDialog" to="." method="_on_FileDialog_hide"]
