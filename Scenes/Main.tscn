@@ -115,6 +115,7 @@ scale = Vector2( 0.703704, 0.704082 )
 texture = ExtResource( 4 )
 
 [node name="FileDialog" type="FileDialog" parent="."]
+visible = true
 margin_left = -1.0
 margin_top = 18.0
 margin_right = 1021.0
@@ -125,6 +126,9 @@ dialog_text = "Select the game to install:
 "
 dialog_autowrap = true
 mode = 0
+access = 2
+current_dir = "/Users/t-her/projects/SteamDeckUI"
+current_path = "/Users/t-her/projects/SteamDeckUI/"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -188,4 +192,5 @@ scale = Vector2( 0.789776, 0.702182 )
 texture = ExtResource( 5 )
 
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="hide" from="FileDialog" to="." method="_on_FileDialog_hide"]
 [connection signal="pressed" from="InstallButton/Button" to="." method="_on_Button_pressed"]
