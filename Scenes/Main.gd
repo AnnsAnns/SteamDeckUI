@@ -13,6 +13,8 @@ func _on_Button_pressed():
 	$FileDialog.show()
 	$MenuButtons/GridContainer/ButtonLabelB.show()
 	$MenuButtons/GridContainer/ButtonTextB.show()
+	$MenuButtons/GridContainer/ButtonLabelX.show()
+	$MenuButtons/GridContainer/ButtonTextX.show()
 	$InstallButton.hide()
 
 func _on_FileDialog_hide():
@@ -21,6 +23,8 @@ func _on_FileDialog_hide():
 	
 	$MenuButtons/GridContainer/ButtonLabelB.hide()
 	$MenuButtons/GridContainer/ButtonTextB.hide()
+	$MenuButtons/GridContainer/ButtonLabelX.hide()
+	$MenuButtons/GridContainer/ButtonTextX.hide()
 
 func show_game_installer_screen():
 	$MiddleScreenLabel.text = "Sending installation request to Proton ..."

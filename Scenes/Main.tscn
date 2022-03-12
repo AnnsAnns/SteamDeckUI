@@ -53,6 +53,8 @@ margin_left = 1.0
 margin_top = 2.0
 margin_right = 1.0
 margin_bottom = -12.0
+focus_next = NodePath("InstallButton/Button")
+focus_mode = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,6 +118,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ButtonLabelX" type="Label" parent="MenuButtons/GridContainer"]
+visible = false
+margin_right = 24.0
+margin_bottom = 24.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTextX" type="Label" parent="MenuButtons/GridContainer"]
+visible = false
+margin_left = 28.0
+margin_right = 80.0
+margin_bottom = 25.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Abort"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ButtonLabelB" type="Label" parent="MenuButtons/GridContainer"]
 visible = false
 margin_right = 24.0
@@ -129,7 +154,8 @@ __meta__ = {
 
 [node name="ButtonTextB" type="Label" parent="MenuButtons/GridContainer"]
 visible = false
-margin_right = 177.0
+margin_left = 28.0
+margin_right = 205.0
 margin_bottom = 25.0
 theme = SubResource( 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -166,7 +192,8 @@ margin_top = 18.0
 margin_right = 1021.0
 margin_bottom = 556.0
 rect_min_size = Vector2( 300, 105 )
-window_title = "Datei öffnen"
+focus_mode = 2
+window_title = ""
 dialog_text = "Select the game to install:
 "
 dialog_autowrap = true
