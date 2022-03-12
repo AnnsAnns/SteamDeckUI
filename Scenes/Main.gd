@@ -11,6 +11,13 @@ func _on_FileDialog_file_selected(path):
 
 func _on_Button_pressed():
 	$FileDialog.show()
+	
+	for object in $FileDialog.get_vbox().get_children():
+		if object is MarginContainer:
+			for object_object in object.get_children():
+				if object_object is Tree:
+					object_object.grab_focus()
+	
 	$MenuButtons/GridContainer/ButtonLabelB.show()
 	$MenuButtons/GridContainer/ButtonTextB.show()
 	$MenuButtons/GridContainer/ButtonLabelX.show()
@@ -33,3 +40,6 @@ func show_game_installer_screen():
 
 func _ready():
 	$InstallButton.show()
+
+func _process(delta):
+	print(self.get_focus_owner())
