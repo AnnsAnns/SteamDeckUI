@@ -7,7 +7,6 @@ func _on_FileDialog_file_selected(path):
 	chosen_path = path
 	path_chosen = true
 	show_game_installer_screen()
-	print(path)
 
 func _on_Button_pressed():
 	$FileDialog.show()
@@ -40,6 +39,3 @@ func show_game_installer_screen():
 
 func _ready():
 	$InstallButton.show()
-
-func _process(delta):
-	print(self.get_focus_owner())

@@ -193,7 +193,7 @@ margin_right = 1021.0
 margin_bottom = 556.0
 rect_min_size = Vector2( 300, 105 )
 focus_mode = 1
-window_title = ""
+window_title = "Datei öffnen"
 dialog_text = "Select the game to install:
 "
 dialog_autowrap = true
